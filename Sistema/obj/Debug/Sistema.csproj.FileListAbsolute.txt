@@ -1,0 +1,7 @@
+C:\Users\Pichau\source\repos\Estudos\Sistema\bin\Debug\Sistema.exe.config
+C:\Users\Pichau\source\repos\Estudos\Sistema\bin\Debug\Sistema.exe
+C:\Users\Pichau\source\repos\Estudos\Sistema\bin\Debug\Sistema.pdb
+C:\Users\Pichau\source\repos\Estudos\Sistema\obj\Debug\Sistema.csprojAssemblyReference.cache
+C:\Users\Pichau\source\repos\Estudos\Sistema\obj\Debug\Sistema.csproj.CoreCompileInputs.cache
+C:\Users\Pichau\source\repos\Estudos\Sistema\obj\Debug\Sistema.exe
+C:\Users\Pichau\source\repos\Estudos\Sistema\obj\Debug\Sistema.pdb
