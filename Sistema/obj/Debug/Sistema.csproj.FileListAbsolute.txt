@@ -5,3 +5,10 @@ C:\Users\Pichau\source\repos\Estudos\Sistema\obj\Debug\Sistema.csprojAssemblyRef
 C:\Users\Pichau\source\repos\Estudos\Sistema\obj\Debug\Sistema.csproj.CoreCompileInputs.cache
 C:\Users\Pichau\source\repos\Estudos\Sistema\obj\Debug\Sistema.exe
 C:\Users\Pichau\source\repos\Estudos\Sistema\obj\Debug\Sistema.pdb
+C:\Users\Pichau\source\repos\estudo_csharp\Sistema\bin\Debug\Sistema.exe.config
+C:\Users\Pichau\source\repos\estudo_csharp\Sistema\bin\Debug\Sistema.exe
+C:\Users\Pichau\source\repos\estudo_csharp\Sistema\bin\Debug\Sistema.pdb
+C:\Users\Pichau\source\repos\estudo_csharp\Sistema\obj\Debug\Sistema.csprojAssemblyReference.cache
+C:\Users\Pichau\source\repos\estudo_csharp\Sistema\obj\Debug\Sistema.csproj.CoreCompileInputs.cache
+C:\Users\Pichau\source\repos\estudo_csharp\Sistema\obj\Debug\Sistema.exe
+C:\Users\Pichau\source\repos\estudo_csharp\Sistema\obj\Debug\Sistema.pdb

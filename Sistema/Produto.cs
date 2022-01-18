@@ -13,7 +13,7 @@ namespace Sistema
         private int quantidadeDisponivel;
         private double valor;
 
-        Produto(string nome, int quantidade, double valor)
+        public Produto(string nome, int quantidade, double valor)
         {
             this.nome = nome;
             this.quantidadeDisponivel = quantidade;

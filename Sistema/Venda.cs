@@ -14,7 +14,7 @@ namespace Sistema
         private int desconto;
         private double valor;
 
-        Venda(Produto produtoVendido, Cliente comprador, int quantidade)
+        public Venda(Produto produtoVendido, Cliente comprador, int quantidade)
         {
             if(produtoVendido.QuantidadeDisponivel > quantidade)
             {
@@ -30,7 +30,7 @@ namespace Sistema
             }
         }
 
-        Venda(Produto produtoVendido, Cliente comprador, int quantidade, int desconto)
+        public Venda(Produto produtoVendido, Cliente comprador, int quantidade, int desconto)
         {
           if(desconto > 0 && desconto < 30)
             {

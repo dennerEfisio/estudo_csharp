@@ -11,7 +11,7 @@ namespace Sistema
         private static int id;
         private string nome, cpf, email;
 
-        Cliente(string nome, string cpf, string email)
+        public Cliente(string nome, string cpf, string email)
         {
             this.nome = nome;
             this.cpf = cpf;
