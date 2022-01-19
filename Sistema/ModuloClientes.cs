@@ -11,7 +11,6 @@ namespace Sistema
         public void menuCliente(List<Cliente> listaCliente)
         {
             int opcao;
-            string nome, cpf, email;
 
             Console.WriteLine("Modulo de clientes:");
             Console.WriteLine("Digite 1 para cadastrar um novo cliente");
@@ -25,14 +24,8 @@ namespace Sistema
             switch (opcao)
             {
                 case 1:
-                    Console.WriteLine("Digite o nome do novo cliente:");
-                    nome = Console.ReadLine();
-                    Console.WriteLine("Digite o email do novo cliente:");
-                    email = Console.ReadLine();
-                    Console.WriteLine("Digite o cpf do novo cliente:");
-                    cpf = Console.ReadLine();
-                    Cliente cliente = new Cliente(nome, cpf, email);
-                    adicionarCliente(listaCliente, cliente);
+
+                    adicionarCliente(listaCliente);
                     break;
 
                 case 2:
@@ -40,15 +33,15 @@ namespace Sistema
                     break;
 
                 case 3:
-                    //pesquisar por busca pelo id
+                    removerCliente(listaCliente);
                     break;
 
                 case 4:
-                    //implementar função e fazer chamada
+                    atualizarClientes(listaCliente);
                     break;
 
                 default:
-                    Console.WriteLine("Retornando ao menu principal");
+                    Console.WriteLine("Retornando ao menu principal...");
                     break;
             }
             if(opcao == 0)
@@ -57,14 +50,32 @@ namespace Sistema
             }
         }
 
-        void adicionarCliente(List<Cliente> listaCliente, Cliente cliente)
+        void adicionarCliente(List<Cliente> listaCliente)
         {
+            string nome, cpf, email;
+
+            Console.WriteLine("Digite o nome do novo cliente:");
+            nome = Console.ReadLine();
+            Console.WriteLine("Digite o email do novo cliente:");
+            email = Console.ReadLine();
+            Console.WriteLine("Digite o cpf do novo cliente:");
+            cpf = Console.ReadLine();
+            Cliente cliente = new Cliente(nome, cpf, email);
             listaCliente.Add(cliente);
         }
 
-        void removerCliente(List<Cliente> listaCliente, Cliente cliente)
+        void removerCliente(List<Cliente> listaCliente)
         {
-            listaCliente.Remove(cliente);
+            string nomeCliente;
+
+            Console.WriteLine("Digite o nome do cliente a ser deletado:");
+            nomeCliente = Console.ReadLine();
+
+            var cliente = listaCliente.FirstOrDefault(x => x.Nome == nomeCliente);
+            if (cliente != null)
+                listaCliente.Remove(cliente);
+            else
+                Console.WriteLine("Cliente nulo ou não encontrado");
         }
 
         void listarClientes(List<Cliente> listaCliente)
@@ -73,6 +84,34 @@ namespace Sistema
             {
                 Console.WriteLine($"{cliente.Nome}\n"); // esclarecer com o Wesley formas de impressão de strings
             }
+        }
+
+        void atualizarClientes(List<Cliente> listaCliente)
+        {
+            string nomeCliente, auxiliar;
+
+            Console.WriteLine("Digite o nome do cliente a ser deletado:");
+            nomeCliente = Console.ReadLine();
+
+            var cliente = listaCliente.FirstOrDefault(x => x.Nome == nomeCliente);
+            if (cliente != null)
+            {
+                Console.WriteLine("Digite o novo nome para o Cliente: ");
+                auxiliar = Console.ReadLine();
+                cliente.Nome = auxiliar;
+
+                Console.WriteLine("Digite o novo cpf do Cliente: ");
+                auxiliar = Console.ReadLine();
+                cliente.Cpf = auxiliar;
+
+                Console.WriteLine("Digite o novo email do Cliente: ");
+                auxiliar = Console.ReadLine();
+                cliente.Email = auxiliar;
+            }
+            else
+                Console.WriteLine("Cliente nulo ou não encontrado");
+
+
         }
 
 
