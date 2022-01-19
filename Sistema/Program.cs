@@ -12,6 +12,7 @@ namespace Sistema
         static void Main(string[] args)
         {
             List<Cliente> ListaCliente = new List<Cliente>();
+            ModuloClientes moduloClientes = new ModuloClientes();
 
             int opcao;
             while (true)
@@ -26,7 +27,7 @@ namespace Sistema
                 switch (opcao)
                 {
                     case 1:
-                        menuCliente(ListaCliente);
+                        moduloClientes.menuCliente(ListaCliente);
                         break;
                     case 2:
                         Console.WriteLine("modulo de produtos");
