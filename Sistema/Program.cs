@@ -11,7 +11,10 @@ namespace Sistema
     {
         static void Main(string[] args)
         {
-            List<Cliente> ListaCliente = new List<Cliente>();
+            List<Cliente> listaCliente = new List<Cliente>();
+            List<Produto> listaProduto = new List<Produto>();
+
+            ModuloProdutos moduloProdutos = new ModuloProdutos();
             ModuloClientes moduloClientes = new ModuloClientes();
 
             int opcao;
@@ -27,10 +30,10 @@ namespace Sistema
                 switch (opcao)
                 {
                     case 1:
-                        moduloClientes.menuCliente(ListaCliente);
+                        moduloClientes.menuCliente(listaCliente);
                         break;
                     case 2:
-                        Console.WriteLine("modulo de produtos");
+                        moduloProdutos.MenuProduto(listaProduto);
                         break;
                     default:
                         Console.WriteLine("Retornando ao menu principal");
