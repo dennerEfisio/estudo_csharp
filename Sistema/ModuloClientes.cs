@@ -8,7 +8,7 @@ namespace Sistema
 {
     class ModuloClientes
     {
-        public void menuCliente(List<Cliente> listaCliente)
+        public void MenuCliente(List<Cliente> listaCliente)
         {
             int opcao;
 
@@ -27,19 +27,19 @@ namespace Sistema
                 {
                     case 1:
 
-                        adicionarCliente(listaCliente);
+                        AdicionarCliente(listaCliente);
                         break;
 
                     case 2:
-                        listarClientes(listaCliente);
+                        ListarClientes(listaCliente);
                         break;
 
                     case 3:
-                        removerCliente(listaCliente);
+                        RemoverCliente(listaCliente);
                         break;
 
                     case 4:
-                        atualizarClientes(listaCliente);
+                        AtualizarClientes(listaCliente);
                         break;
 
                     default:
@@ -53,24 +53,34 @@ namespace Sistema
             }
         }
 
-        void adicionarCliente(List<Cliente> listaCliente)
+        void AdicionarCliente(List<Cliente> listaCliente)
         {
             string nome, cpf, email;
 
             Console.WriteLine("Digite o nome do novo cliente:");
             nome = Console.ReadLine();
+
             Console.WriteLine("Digite o email do novo cliente:");
             email = Console.ReadLine();
+
             Console.WriteLine("Digite o cpf do novo cliente:");
             cpf = Console.ReadLine();
 
             Cliente cliente = new Cliente(nome, cpf, email);
-            listaCliente.Add(cliente);
 
-            Console.WriteLine("Cliente adicionado com sucesso! \n");
+            if (listaCliente.Contains(cliente))
+            {
+                Console.WriteLine("Cliente já cadastrado, retornando ao menu...");
+            }
+            else
+            {
+                listaCliente.Add(cliente);
+
+                Console.WriteLine("Cliente adicionado com sucesso! \n");
+            }
         }
 
-        void removerCliente(List<Cliente> listaCliente)
+        void RemoverCliente(List<Cliente> listaCliente)
         {
             string nomeCliente;
 
@@ -87,17 +97,17 @@ namespace Sistema
                 Console.WriteLine("Cliente nulo ou não encontrado \n");
         }
 
-        void listarClientes(List<Cliente> listaCliente)
+        void ListarClientes(List<Cliente> listaCliente)
         {
             Console.WriteLine("Listando clientes:");
             foreach (Cliente cliente in listaCliente)
             {
-                Console.WriteLine($"{cliente.Nome}"); // esclarecer com o Wesley formas de impressão de strings
+                Console.WriteLine($"{cliente.Nome}");
             }
             Console.WriteLine("Fim da listagem \n");
         }
 
-        void atualizarClientes(List<Cliente> listaCliente)
+        void AtualizarClientes(List<Cliente> listaCliente)
         {
             string nomeCliente, auxiliar;
 

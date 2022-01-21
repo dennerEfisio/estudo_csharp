@@ -18,6 +18,7 @@ namespace Sistema
             ModuloClientes moduloClientes = new ModuloClientes();
 
             int opcao;
+
             while (true)
             {
                 Console.WriteLine("Escolha uma operação para ser executada:");
@@ -25,12 +26,20 @@ namespace Sistema
                 Console.WriteLine("Digite 2 para acessar o modulo de produtos");
                 Console.WriteLine("Digite outro para sair \n");
 
-                opcao = Convert.ToInt32(Console.ReadLine());
+                try
+                {
+                    opcao = Convert.ToInt32(Console.ReadLine());
+                }
+                catch
+                {
+                    Console.WriteLine("Opção inválida: deve ser um numero inteiro");
+                    throw;   
+                }
 
                 switch (opcao)
                 {
                     case 1:
-                        moduloClientes.menuCliente(listaCliente);
+                        moduloClientes.MenuCliente(listaCliente);
                         break;
                     case 2:
                         moduloProdutos.MenuProduto(listaProduto);

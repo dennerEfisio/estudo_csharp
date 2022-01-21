@@ -27,19 +27,19 @@ namespace Sistema
                 {
                     case 1:
 
-                        adicionarProduto(listaProduto);
+                        AdicionarProduto(listaProduto);
                         break;
 
                     case 2:
-                        listarProdutos(listaProduto);
+                        ListarProdutos(listaProduto);
                         break;
 
                     case 3:
-                        removerProduto(listaProduto);
+                        RemoverProduto(listaProduto);
                         break;
 
                     case 4:
-                        atualizarProduto(listaProduto);
+                        AtualizarProduto(listaProduto);
                         break;
 
                     default:
@@ -53,7 +53,7 @@ namespace Sistema
             }
         }
 
-        void adicionarProduto(List<Produto> listaProduto) 
+        void AdicionarProduto(List<Produto> listaProduto) 
         {
             string nome;
             int quantidadeDisponivel;
@@ -61,18 +61,40 @@ namespace Sistema
 
             Console.WriteLine("Digite o nome do novo produto:");
             nome = Console.ReadLine();
+
             Console.WriteLine("Digite a quantidade disponivel no estoque deste produto:");
-            quantidadeDisponivel = Convert.ToInt32(Console.ReadLine());
+            try
+            {
+                quantidadeDisponivel = Convert.ToInt32(Console.ReadLine());
+            }
+            catch
+            {
+                throw;
+            }
+
             Console.WriteLine("Digite o valor do produto em reais:");
-            valor = float.Parse(Console.ReadLine());
+            try
+            {
+                valor = float.Parse(Console.ReadLine());
+            }
+            catch
+            {
+                throw;
+            }
 
             Produto produto = new Produto(nome, quantidadeDisponivel, valor);
-            listaProduto.Add(produto);
-
-            Console.WriteLine("Produto adicionado com sucesso! \n");
+            if (listaProduto.Contains(produto))
+            {
+                Console.WriteLine("Produto já cadastrado, retornando ao menu...");
+            }
+            else
+            {
+                listaProduto.Add(produto);
+                Console.WriteLine("Produto adicionado com sucesso! \n");
+            }
         }
 
-        void removerProduto(List<Produto> listaProduto)
+        void RemoverProduto(List<Produto> listaProduto)
         {
             string nomeProduto;
 
@@ -89,17 +111,17 @@ namespace Sistema
                 Console.WriteLine("Produto nulo ou não encontrado \n");
         }
 
-        void listarProdutos(List<Produto> listaProduto)
+        void ListarProdutos(List<Produto> listaProduto)
         {
             Console.WriteLine("Listando produtos:");
             foreach (Produto produto in listaProduto)
             {
-                Console.WriteLine($"{produto.Nome}"); // esclarecer com o Wesley formas de impressão de strings
+                Console.WriteLine($"{produto.Nome}");
             }
             Console.WriteLine("Fim da listagem \n");
         }
 
-        void atualizarProduto(List<Produto> listaProduto)
+        void AtualizarProduto(List<Produto> listaProduto)
         {
             string nomeProduto, auxiliar;
             int quantidade;
@@ -116,13 +138,26 @@ namespace Sistema
                 produto.Nome = auxiliar;
 
                 Console.WriteLine("Digite o novo cpf do produto: ");
-                quantidade = Convert.ToInt32(Console.ReadLine());
-                produto.QuantidadeDisponivel = quantidade;
+                try
+                {
+                    quantidade = Convert.ToInt32(Console.ReadLine());
+                    produto.QuantidadeDisponivel = quantidade;
+                }
+                catch
+                {
+                    throw;
+                }
 
                 Console.WriteLine("Digite o novo email do produto: ");
-                valor = float.Parse(Console.ReadLine());
-                produto.Valor = valor;
-
+                try
+                {
+                    valor = float.Parse(Console.ReadLine());
+                    produto.Valor = valor;
+                }
+                catch
+                {
+                    throw;
+                }
                 Console.WriteLine("Produto atualizado com sucesso! \n");
             }
             else
