@@ -21,7 +21,14 @@ namespace Sistema
                 Console.WriteLine("Digite 4 para editar um cliente");
                 Console.WriteLine("Digite 0 voltar ao menu principal \n");
 
-                opcao = Convert.ToInt32(Console.ReadLine());
+                try
+                {
+                    opcao = Convert.ToInt32(Console.ReadLine());
+                }
+                catch
+                {
+                    throw;
+                }
 
                 switch (opcao)
                 {
