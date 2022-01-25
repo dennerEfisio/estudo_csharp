@@ -127,7 +127,7 @@ namespace Sistema
             int quantidade;
             float valor;
 
-            Console.WriteLine("Digite o nome do produto a ser deletado:");
+            Console.WriteLine("Digite o nome do produto a ser atualizado:");
             nomeProduto = Console.ReadLine();
 
             var produto = listaProduto.FirstOrDefault(x => x.Nome == nomeProduto);

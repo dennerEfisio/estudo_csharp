@@ -8,7 +8,7 @@ namespace Sistema
 {
     class ModuloVendas
     {
-        public void MenuVendas(List<Cliente> listaCliente, List<Produto> listaProdutos, List<Venda> listaVendas)
+        public void MenuVendas(List<Cliente> listaCliente, List<Produto> listaProdutos, List<Venda> listaVenda)
         {
             int opcao;
 
@@ -34,19 +34,19 @@ namespace Sistema
                 {
                     case 1:
 
-                        AdicionarVenda(listaCliente, listaProdutos, listaVendas);
+                        AdicionarVenda(listaCliente, listaProdutos, listaVenda);
                         break;
 
                     case 2:
-                        //ListarVendas(listaCliente, listaProdutos);
+                        ListarVendas(listaVenda);
                         break;
 
                     case 3:
-                        //RemoverVenda(listaCliente, listaProdutos);
+                        RemoverVenda(listaCliente, listaProdutos, listaVenda);
                         break;
 
                     case 4:
-                        //AtualizarVenda(listaCliente, listaProdutos);
+                        AtualizarVenda(listaCliente, listaProdutos, listaVenda);
                         break;
 
                     default:
@@ -139,6 +139,100 @@ namespace Sistema
                 Console.WriteLine("Valor digitado incorreto (deve ser S ou N), retornando ao menu...");
                 return;
             }
+
+        }
+
+        void RemoverVenda(List<Cliente> listaCliente, List<Produto> listaProduto, List<Venda> listaVenda)
+        {
+            string nomeProduto, nomeCliente;
+
+            Console.WriteLine("Digite o nome do cliente que comprou o produto:");
+            nomeCliente = Console.ReadLine();
+
+            var cliente = listaCliente.FirstOrDefault(x => x.Nome == nomeCliente);
+
+            Console.WriteLine("Digite o nome do produto vendido:");
+            nomeProduto = Console.ReadLine();
+
+            var produto = listaProduto.FirstOrDefault(x => x.Nome == nomeProduto);
+
+            var venda = listaVenda.FirstOrDefault( v => v.Comprador.Nome == nomeCliente && v.ProdutoVendido.Nome == nomeProduto);
+
+            if (venda != null)
+            {
+                listaVenda.Remove(venda);
+                Console.WriteLine("Venda removida com sucesso! \n");
+            }
+            else
+                Console.WriteLine("Venda nulo ou não encontrada \n");
+        }
+
+        void ListarVendas(List<Venda> listaVenda)
+        {
+            Console.WriteLine("Listando produtos:");
+            foreach (Venda venda in listaVenda)
+            {
+                Console.WriteLine($"Produto {venda.ProdutoVendido} vendido ao cliente {venda.Comprador}");
+            }
+            Console.WriteLine("Fim da listagem \n");
+        }
+
+        void AtualizarVenda(List<Cliente> listaCliente, List<Produto> listaProduto, List<Venda> listaVenda)
+        {
+            string nomeProduto, nomeCliente;
+            float valor;
+
+            Console.WriteLine("Digite o nome do produto vendido que será atualizado:");
+            nomeProduto = Console.ReadLine();
+
+            Console.WriteLine("Digite o nome do cliente comprador que será atualizado:");
+            nomeCliente = Console.ReadLine();
+
+            var venda = listaVenda.FirstOrDefault(v => v.Comprador.Nome == nomeCliente && v.ProdutoVendido.Nome == nomeProduto);
+
+            if (venda != null)
+            {
+                Console.WriteLine("Digite o nome atualizado do produto vendido: ");
+                nomeProduto = Console.ReadLine();
+
+                var produto = listaProduto.FirstOrDefault(x => x.Nome == nomeProduto);
+
+                if(produto != null)
+                    venda.ProdutoVendido = produto;
+                else
+                {
+                    Console.WriteLine("Produto não encontrado ou não cadastrado, retornando ao menu...");
+                    return;
+                }
+
+                Console.WriteLine("Digite o nome atualizado do cliente comprador: ");
+                nomeCliente = Console.ReadLine();
+
+                var cliente = listaCliente.FirstOrDefault(x => x.Nome == nomeCliente);
+
+                if (cliente != null)
+                    venda.Comprador = cliente;
+                else
+                {
+                    Console.WriteLine("Produto não encontrado ou não cadastrado, retornando ao menu...");
+                    return;
+                }
+
+                Console.WriteLine("Digite o novo valor da venda: ");
+                try
+                {
+                    valor = float.Parse(Console.ReadLine());
+                    venda.Valor = valor;
+                }
+                catch
+                {
+                    throw;
+                }
+
+                Console.WriteLine("Venda atualizada com sucesso! \n");
+            }
+            else
+                Console.WriteLine("Venda nula ou não encontrada");
 
         }
 
